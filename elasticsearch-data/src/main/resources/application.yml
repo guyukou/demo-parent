@@ -1,0 +1,15 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-nodes: localhost:9300
+      cluster-name: elasticsearch
+
+#spring:
+#    data:
+#    elasticsearch:
+#      cluster-nodes: 10.0.35.134:9300,10.0.46.108:9300,10.0.37.181:9300
+#      cluster-name: pulse-es
+
+
+server:
+  port: 10000
