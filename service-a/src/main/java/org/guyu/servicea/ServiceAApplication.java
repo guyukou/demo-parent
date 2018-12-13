@@ -9,11 +9,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.concurrent.*;
 
 @RestController
 @RequestMapping("/service_a")
@@ -44,6 +43,13 @@ public class ServiceAApplication {
                 entity, String.class
         ).getBody();
         return cResult;
+    }
+
+    @GetMapping("/get")
+    public String get() throws ExecutionException, InterruptedException {
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Future<String> submit = executorService.submit(() -> restTemplate.getForObject("http://www.example.com", String.class));
+        return submit.get();
     }
 
 }
