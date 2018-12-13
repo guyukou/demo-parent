@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>org.guyu</groupId>
-    <artifactId>service-a</artifactId>
+    <artifactId>service-c1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>service-a</name>
+    <name>service-c1</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
