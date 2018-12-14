@@ -12,11 +12,11 @@ public class ServiceM {
 
     @Autowired
     private ServiceN serviceN;
-    public String m1(boolean includeErr) {
-        if (!includeErr) {
+    public String m1(RequestParam requestParam) {
+        if (!requestParam.isIncludeErr()) {
             return serviceN.n1();
         } else {
-            return serviceN.n2();
+            return serviceN.n2(requestParam);
         }
     }
 }

@@ -13,8 +13,11 @@ public class ServiceN {
         return "n1";
     }
 
-    public String n2() {
-        throw new UnsupportedOperationException("n2 方法暂未实现");
+    public String n2(RequestParam requestParam) {
+        if (!requestParam.isIncludeAll()) {
+            throw new UnsupportedOperationException("n2 方法暂未实现");
+        }
+        return "n2";
     }
 
 }
