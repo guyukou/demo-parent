@@ -23,7 +23,7 @@ public class ServiceC2Application {
 
     @PostMapping
     public Object dosth(@RequestBody RequestParam requestParam) {
-        return serviceM.m1(requestParam.isIncludeErr());
+        return serviceM.m1(requestParam);
     }
 
 }
