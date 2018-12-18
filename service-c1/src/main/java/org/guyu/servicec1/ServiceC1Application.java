@@ -43,7 +43,7 @@ public class ServiceC1Application {
 
     @GetMapping("/constant")
     public String constant() {
-        restTemplate.getForObject("http://localhost:10010/service_c2/constant", String.class);
+        restTemplate.getForObject("http://localhost:10022/service_c2/constant", String.class);
         try {
             TimeUnit.MILLISECONDS.sleep(10);
         } catch (InterruptedException e) {
