@@ -24,7 +24,6 @@ public class RedisClusterApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println(redisTemplate.keys("websocket|uid:"));
         redisTemplate.delete(redisTemplate.keys("websocket|uid:"));
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.concurrent.TimeUnit;
+
 @RestController
 @RequestMapping("/service_b")
 @Slf4j
@@ -27,6 +29,17 @@ public class ServiceBApplication {
             throw new IllegalStateException("unkown exception???");
         }
         return result;
+    }
+
+    @GetMapping("/constant")
+    public String constant() {
+        restTemplate.getForObject("http://localhost:10010/service_c1/constant", String.class);
+        try {
+            TimeUnit.MILLISECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "ok";
     }
 
 }

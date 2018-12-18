@@ -45,6 +45,17 @@ public class ServiceAApplication {
         return cResult;
     }
 
+    @GetMapping("/constant")
+    public String constant() {
+        restTemplate.getForObject("http://localhost:10010/service_b/constant", String.class);
+        try {
+            TimeUnit.MILLISECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "ok";
+    }
+
     @GetMapping("/get")
     public String get() throws ExecutionException, InterruptedException {
         ExecutorService executorService = Executors.newSingleThreadExecutor();

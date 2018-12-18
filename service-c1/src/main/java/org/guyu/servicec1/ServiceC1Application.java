@@ -10,11 +10,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/service_c1")
@@ -40,6 +39,17 @@ public class ServiceC1Application {
                 HttpMethod.POST,
                 entity,String.class
         ).getBody();
+    }
+
+    @GetMapping("/constant")
+    public String constant() {
+        restTemplate.getForObject("http://localhost:10010/service_c2/constant", String.class);
+        try {
+            TimeUnit.MILLISECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "ok";
     }
 
 }
