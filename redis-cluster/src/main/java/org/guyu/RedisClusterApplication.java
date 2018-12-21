@@ -27,7 +27,7 @@ public class RedisClusterApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Set<String> keys = redisTemplate.keys("websocket|uid:");
+        Set<String> keys = redisTemplate.keys("websocket|uid:*");
         for (String key : keys) {
             Map<Object, Object> entries = redisTemplate.opsForHash().entries(key);
             for (Map.Entry<Object, Object> entry : entries.entrySet()) {
