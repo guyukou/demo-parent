@@ -36,8 +36,13 @@ public class RedisClusterApplication implements CommandLineRunner {
                 }
             }*/
             Set<Object> keys1 = redisTemplate.opsForHash().keys(key);
-            System.out.println(keys1);
             System.out.println(key);
+            for (Object o : keys1) {
+                Object value = redisTemplate.opsForHash().get(key, o);
+                System.out.println(value);
+            }
+            System.out.println();
+
 
         }
 
