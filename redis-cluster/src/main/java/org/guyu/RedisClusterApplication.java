@@ -7,6 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.redis.core.RedisTemplate;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @author guyu
  * created at 2018/11/13 11:24 AM
@@ -24,6 +27,16 @@ public class RedisClusterApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        redisTemplate.delete(redisTemplate.keys("websocket|uid:"));
+        Set<String> keys = redisTemplate.keys("websocket|uid:");
+        for (String key : keys) {
+            Map<Object, Object> entries = redisTemplate.opsForHash().entries(key);
+            for (Map.Entry<Object, Object> entry : entries.entrySet()) {
+                if (!entry.getValue().toString().startsWith("[")) {
+                    System.out.format("key:%s, key2: %s, value:%s", key, entry.getKey(), entry.getValue());
+                }
+            }
+
+        }
+
     }
 }
