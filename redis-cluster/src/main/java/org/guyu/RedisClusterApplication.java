@@ -32,10 +32,11 @@ public class RedisClusterApplication implements CommandLineRunner {
             Map<Object, Object> entries = redisTemplate.opsForHash().entries(key);
             for (Map.Entry<Object, Object> entry : entries.entrySet()) {
                 if (!entry.getValue().toString().startsWith("[")) {
-                    System.out.format("key:%s, key2: %s, value:%s", key, entry.getKey(), entry.getValue());
+                    System.out.format("key:%s, key2: %s, value:%s\n", key, entry.getKey(), entry.getValue());
                 }
             }
         }
+        System.out.println("end");
 
     }
 }
