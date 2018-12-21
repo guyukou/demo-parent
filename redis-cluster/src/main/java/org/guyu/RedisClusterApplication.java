@@ -29,12 +29,15 @@ public class RedisClusterApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Set<String> keys = redisTemplate.keys("websocket|uid:*");
         for (String key : keys) {
-            Map<Object, Object> entries = redisTemplate.opsForHash().entries(key);
+            /*Map<Object, Object> entries = redisTemplate.opsForHash().entries(key);
             for (Map.Entry<Object, Object> entry : entries.entrySet()) {
                 if (!entry.getValue().toString().startsWith("[")) {
                     System.out.format("key:%s, key2: %s, value:%s", key, entry.getKey(), entry.getValue());
                 }
-            }
+            }*/
+            Set<Object> keys1 = redisTemplate.opsForHash().keys(key);
+            System.out.println(keys1);
+            System.out.println(key);
 
         }
 
