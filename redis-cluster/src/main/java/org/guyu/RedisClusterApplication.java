@@ -5,8 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.redis.core.Cursor;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ScanOptions;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -27,17 +31,17 @@ public class RedisClusterApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Set<String> keys = redisTemplate.keys("websocket|uid:*");
-        for (String key : keys) {
-            Map<Object, Object> entries = redisTemplate.opsForHash().entries(key);
-            for (Map.Entry<Object, Object> entry : entries.entrySet()) {
-                if (!entry.getValue().toString().startsWith("[")) {
-                    System.out.format("key:%s, key2: %s, value:%s\n", key, entry.getKey(), entry.getValue());
-                    redisTemplate.opsForHash().delete(key, entry.getKey());
-                }
+        Set<String> execute = redisTemplate.execute((RedisCallback<Set<String>>) connection -> {
+
+            Set<String> binaryKeys = new HashSet<>();
+
+            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match("websocket|uid*").count(2000).build());
+            while (cursor.hasNext()) {
+                binaryKeys.add(new String(cursor.next()));
             }
-        }
-        System.out.println("end");
+            return binaryKeys;
+        });
+        System.out.println(execute);
 
     }
 }
