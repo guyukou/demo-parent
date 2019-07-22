@@ -31,7 +31,7 @@ public class RedisClusterApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Set<String> execute = redisTemplate.execute((RedisCallback<Set<String>>) connection -> {
+        /*Set<String> execute = redisTemplate.execute((RedisCallback<Set<String>>) connection -> {
 
             Set<String> binaryKeys = new HashSet<>();
 
@@ -40,8 +40,10 @@ public class RedisClusterApplication implements CommandLineRunner {
                 binaryKeys.add(new String(cursor.next()));
             }
             return binaryKeys;
-        });
-        System.out.println(execute);
+        });*/
+        Set<String> keys = redisTemplate.keys("tcp|uid*");
+        System.out.println(keys.size());
+
 
     }
 }
