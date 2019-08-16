@@ -10,7 +10,6 @@
         <module>rest-template</module>
         <module>redis-cluster</module>
         <module>elasticsearch-data</module>
-        <module>spring-core</module>
         <module>spi</module>
         <module>validation</module>
     </modules>
