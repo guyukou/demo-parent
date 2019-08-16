@@ -12,6 +12,7 @@
         <module>elasticsearch-data</module>
         <module>spring-core</module>
         <module>spi</module>
+        <module>validation</module>
     </modules>
     <packaging>pom</packaging>
 
