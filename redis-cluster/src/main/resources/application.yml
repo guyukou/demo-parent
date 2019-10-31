@@ -1,0 +1,7 @@
+spring:
+  redis:
+    timeout: 1000
+#    cluster:
+#      nodes: 10.32.16.22:6379,10.32.16.22:6380,10.32.16.22:6381
+#      maxRedirects: 6
+    host: localhost
