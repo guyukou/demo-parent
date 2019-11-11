@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 /**
  * @author guyu
@@ -41,30 +44,9 @@ public class RedisClusterApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        GoodsClientDTO goodsClientDTO = new GoodsClientDTO();
-        goodsClientDTO.setId(200L);
-        goodsClientDTO.setAppGoodsId(0L);
-        goodsClientDTO.setTitle("");
-        goodsClientDTO.setDescription("");
-        goodsClientDTO.setOriginPrice(new BigDecimal("0"));
-        goodsClientDTO.setSellPrice(new BigDecimal("0"));
-        goodsClientDTO.setSpuId(0L);
-        goodsClientDTO.setSpuName("");
-        goodsClientDTO.setSales(0);
-        goodsClientDTO.setStock(0);
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("abc", new Date());
-        map.put("xyz", 379);
-        map.put("abc2", 123);
-        goodsClientDTO.setAttrs(map);
-        goodsClientDTO.setCover("");
-        goodsClientDTO.setDetailPic("");
-        goodsClientDTO.setVideoSrc("");
-
-//        hashMapping.writeHash("guyu", goodsClientDTO);
-        GoodsClientDTO guyu = hashMapping.loadHash("guyu1");
-        System.out.println(guyu);
-
+//        GoodsClientDTO goodsClientDTO = new GoodsClientDTO();
+//        redisTemplate.opsForValue().set("guyu", goodsClientDTO);
+        System.out.println(redisTemplate.opsForValue().get("guyu"));
     }
 
     @GetMapping("/iterate")
