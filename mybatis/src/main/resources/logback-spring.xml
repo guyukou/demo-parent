@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<!--    <include resource="com/vipkid/commons/springboot/meteor.xml"/>-->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+
+    <property name="encoding" value="UTF-8"/>
+
+<!--    <appender name="FILE" class="ch.qos.logback.core.rolling.CommonRollingFileAppender">-->
+<!--        <fileName>mid-goods-service-web.log</fileName>-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>INFO</level>-->
+<!--        </filter>-->
+<!--    </appender>-->
+
+<!--    <appender name="FILE-ERROR" class="ch.qos.logback.core.rolling.CommonRollingFileAppender">-->
+<!--        <fileName>mid-goods-service-web-error.log</fileName>-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>ERROR</level>-->
+<!--        </filter>-->
+<!--    </appender>-->
+
+<!--    <root level="INFO">-->
+<!--        &lt;!&ndash; STDOUT已经通过meteor.xml自动加入，无需再配置 &ndash;&gt;-->
+<!--        <appender-ref ref="FILE"/>-->
+<!--        <appender-ref ref="FILE-ERROR"/>-->
+<!--    </root>-->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <logger name="org.guyu" level="debug" additivity="false" >
+        <appender-ref ref="CONSOLE" />
+    </logger>
+</configuration>

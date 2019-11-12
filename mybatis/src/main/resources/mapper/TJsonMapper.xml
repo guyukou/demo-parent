@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.guyu.mapper.TJsonMapper">
+    <resultMap id="BASE_MAP" type="org.guyu.domain.d0.TJsonDO">
+        <id column="id" property="id" />
+        <result column="c_json" property="cJson"/>
+        <result column="c_varchar" property="cVarchar"/>
+
+    </resultMap>
+
+    <insert id="insert">
+        insert into t_json
+        (c_json, c_varchar) VALUES (#{params.cJson}, #{params.cVarchar})
+    </insert>
+
+    <select id="selectAll" resultMap="BASE_MAP">
+        select * from t_json
+    </select>
+</mapper>

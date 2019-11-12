@@ -13,6 +13,5 @@ public class Comp {
     private String s;
 
     public Comp() {
-        System.out.println(s);
     }
 }

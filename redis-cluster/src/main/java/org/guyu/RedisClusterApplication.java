@@ -44,7 +44,7 @@ public class RedisClusterApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-//        GoodsClientDTO goodsClientDTO = new GoodsClientDTO();
+        GoodsClientDTO goodsClientDTO = new GoodsClientDTO();
 //        redisTemplate.opsForValue().set("guyu", goodsClientDTO);
         System.out.println(redisTemplate.opsForValue().get("guyu"));
     }

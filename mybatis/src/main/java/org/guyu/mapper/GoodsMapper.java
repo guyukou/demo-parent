@@ -1,7 +1,9 @@
-package org.guyu;
+package org.guyu.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.guyu.Entry;
+import org.guyu.domain.d0.GoodsDO;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,7 @@ import java.util.Map;
  */
 @Mapper
 public interface GoodsMapper {
+    int insert(@Param("goods") GoodsDO goodsDO);
 
     void updateJson(@Param("entries") List<Entry> entries);
 }

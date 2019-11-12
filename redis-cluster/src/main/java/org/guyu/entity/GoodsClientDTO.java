@@ -26,5 +26,5 @@ public class GoodsClientDTO {
     private Map<String, Object> attrs;
     private String cover;
     private String detailPic;
-    private String videoSrc;
+//    private String videoSrc;
 }
