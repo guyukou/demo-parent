@@ -9,8 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.redis.connection.RedisStringCommands;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.types.Expiration;
 import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +21,7 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -36,6 +39,8 @@ public class RedisClusterApplication implements CommandLineRunner {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
     @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+    @Autowired
     private HashMapping hashMapping;
 
     public static void main(String[] args) {
@@ -44,9 +49,17 @@ public class RedisClusterApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        GoodsClientDTO goodsClientDTO = new GoodsClientDTO();
+//        GoodsClientDTO goodsClientDTO = new GoodsClientDTO();
 //        redisTemplate.opsForValue().set("guyu", goodsClientDTO);
-        System.out.println(redisTemplate.opsForValue().get("guyu"));
+//        System.out.println(redisTemplate.opsForValue().get("guyu"));
+        String[] split = "1384,1317,1316,1315,1314,1313,1312,1311,1309,1308,1307,1306,1305,1304,1303,1302,1301,1300,1299,1298,1297,1296,1295,1294,1293,1292,1291,1290,1289,1288,1287,1286,1285,1284,1283,1282,1281,1280,1279,1278".split(",");
+        String prefix = "mid:goods:";
+        List<String> collect = Arrays.stream(split).map(s -> prefix + s).collect(Collectors.toList());
+//        redisTemplate.opsForValue().multiGet(collect);
+        stringRedisTemplate.opsForValue().get("mid:goods:1278");
+        redisTemplate.delete(collect);
+        System.out.println();
+
     }
 
     @GetMapping("/iterate")

@@ -1,6 +1,5 @@
 package org.guyu;
 
-import com.alibaba.druid.support.json.JSONUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.guyu.domain.d0.GoodsDO;
 import org.guyu.domain.d0.TJsonDO;
@@ -12,8 +11,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,10 +22,10 @@ import java.util.Map;
  */
 @Slf4j
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class MybatisApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(MybatisApplication.class, args);
     }
 
     @Autowired
@@ -39,13 +36,10 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Map<String, Object> map = new HashMap<>();
-        map.put("abc", Arrays.asList(1, 2, 3));
-        map.put("xyz", Arrays.asList("x", "y", "z"));
-
-        testGoods(map);
-
-//        log.info("map: {}", map);
+        boolean exists = goodsMapper.exists(1000L);
+        System.out.println(exists);
+        exists = goodsMapper.exists(10000L);
+        System.out.println(exists);
     }
 
     private void testGoods(Map<String, Object> map) {

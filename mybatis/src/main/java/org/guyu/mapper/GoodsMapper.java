@@ -17,4 +17,6 @@ public interface GoodsMapper {
     int insert(@Param("goods") GoodsDO goodsDO);
 
     void updateJson(@Param("entries") List<Entry> entries);
+
+    boolean exists(Long id);
 }

@@ -45,5 +45,8 @@
     )
     where id = 17394
   </update>
+  <select id="exists" resultType="boolean">
+    select exists(select * from goods where id = #{id})
+  </select>
 </mapper>
 
