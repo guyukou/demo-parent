@@ -15,10 +15,10 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum PunishType {
-    PHOTO(1, "短视频"),
-    LIVE(2, "直播"),
-    PROFILE(3, "主页"),
     SEVERE_SCORE(8, "严重违规分"),
+    NORMAL_SCORE(10, "一般违规分"),
+    PENALTY(11, "违约金"),
+    DRAW_PROHIBIT(13, "封禁抽奖"),
 
     ;
     private final int value;

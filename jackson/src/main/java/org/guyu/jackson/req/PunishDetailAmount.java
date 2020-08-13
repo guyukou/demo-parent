@@ -1,6 +1,6 @@
 package org.guyu.jackson.req;
 
-import org.guyu.jackson.model.NumberDTO;
+import org.guyu.jackson.model.AmountDTO;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,6 +11,6 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class PunishDetailScore extends PunishDetail {
-    private NumberDTO param;
+public class PunishDetailAmount extends PunishDetail {
+    private AmountDTO param;
 }

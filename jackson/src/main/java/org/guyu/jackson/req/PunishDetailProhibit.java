@@ -1,6 +1,6 @@
 package org.guyu.jackson.req;
 
-import org.guyu.jackson.enums.PunishType;
+import org.guyu.jackson.model.ProhibitDTO;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,6 +11,6 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class PunishDetailProfile extends PunishDetail {
-    private double rate;
+public class PunishDetailProhibit extends PunishDetail {
+    private ProhibitDTO param;
 }
